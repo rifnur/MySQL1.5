@@ -1,11 +1,11 @@
-# 3адание 1
-# Запускаем на под 1 пользователем
+# 3Р°РґР°РЅРёРµ 1
+# Р—Р°РїСѓСЃРєР°РµРј РЅР° РїРѕРґ 1 РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 USE employees;
-LOCK TABLE salaries READ;
+LOCK TABLE salaries READ; 
 SELECT * FROM employees.salaries LIMIT 10
 
-# Запускаем на под  пользователем
-# SELECT выполниться, UPDATE,INSERT только после снятия блокировки 1  пользователем
+# Р—Р°РїСѓСЃРєР°РµРј РЅР° РїРѕРґ  РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
+# SELECT РІС‹РїРѕР»РЅРёС‚СЊСЃСЏ, UPDATE,INSERT С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ СЃРЅСЏС‚РёСЏ Р±Р»РѕРєРёСЂРѕРІРєРё 1  РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 SELECT * FROM employees.salaries LIMIT 10;
 
 INSERT INTO `employees`.`salaries`
@@ -13,10 +13,10 @@ INSERT INTO `employees`.`salaries`
 VALUES
 (10001,10000,Curdate(),Curdate());
 
-# Запускаем на под 1 пользователем
+# Р—Р°РїСѓСЃРєР°РµРј РЅР° РїРѕРґ 1 РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 UNLOCK TABLES;
 
-#3адание 2 
+#3Р°РґР°РЅРёРµ 2 
 BEGIN;
 SELECT @emp_no:=`emp_no`+1 FROM `employees`.`employees` order by `emp_no` desc Limit 1;
 
@@ -31,7 +31,7 @@ VALUES
 (@emp_no,500000,current_date(),'9999-01-01');
 COMMIT;
 
-#3адание 3
+#3Р°РґР°РЅРёРµ 3
 EXPLAIN SELECT  DE.*,  EMP.*,SA.*
 FROM dept_emp DE 
  JOIN salaries SA ON DE.emp_no = SA.emp_no
